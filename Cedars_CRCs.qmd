@@ -1,0 +1,391 @@
+---
+title: "Beyond the Symptoms"
+subtitle: "Reducing Emergency Department Overutilization by Broadening Homelessness Services"
+author: "Luke Morris"
+institute: "Cedars-Sinai Medical Center"
+format: 
+  revealjs:
+    theme:
+      - moon
+    self-contained: true
+    logo: images/CSlogo3.png
+from: markdown+emoji
+---
+
+::: columns
+::: {.column width="40%"}
+### [AGENDA]{style="font-weight:500"}
+:::
+
+::: {.column width="60%"}
+-   Homelessness Figures
+
+-   The ED Care Model
+
+-   Problems at the Intersection
+
+-   A New Role
+
+-   Evidence of Effect
+:::
+:::
+
+::: footer
+This author has no conflicts of interest to disclose
+:::
+
+## [Homelessness by the Numbers]{style="font-weight:500"} {.smaller}
+
+::: columns
+::: {.column width="45%"}
+-   **United States** (\~pop. 331.5 million)
+
+    -   580,466 People Experiencing Homelessness (PEH)
+
+    -   0.175% of U.S. population
+
+     
+
+-   **California** (\~pop. 40 million)
+
+    -   161,548 PEH
+
+    -   0.408% of state population
+
+    -   California makes up 11.9% of U.S. pop, but hosts 28% of all PEH in U.S.
+:::
+
+::: {.column width="55%"}
+![](images/hmlsPcts.png)
+:::
+:::
+
+::: footer
+Figures via [2020 Census](https://www.census.gov/programs-surveys/decennial-census/decade/2020/2020-census-results.html) and [HUD 2020 Annual Homelessness Assessment Report](https://www.huduser.gov/portal/sites/default/files/pdf/2020-AHAR-Part-1.pdf)
+:::
+
+## [Homelessness in LA]{style="font-weight:500"} {.smaller}
+
+::: columns
+::: {.column width="60%"}
+-   **LA County** (\~pop. 10 million)
+
+    -   25% of California's population but 41% of its PEH
+
+    -   3% of U.S. population but 12% of its PEH
+
+ 
+
+-   **LA City** (\~pop. 3.9 million)
+
+    -   39% of county population by 62% of PEH
+
+    -   2/3 in first episode of homelessness
+
+    -   Estimated new 20,000 PEH amid COVID
+:::
+
+::: {.column width="40%"}
+![](images/laFigs.png){fig-align="right"}
+:::
+:::
+
+::: footer
+Figures via [LAHSA 2020 Count](https://www.lahsa.org/news?article=726-2020-greater-los-angeles-homeless-count-results#:~:text=LOS%20ANGELES%2C%20CA%E2%80%94The%20Los,point%2Din%2Dtime%20count.) and [Union Rescue Mission in Skid Row](https://urm.org/)
+:::
+
+## [The Emergency Medicine Model]{style="font-weight:500"} {.smaller}
+
+::: columns
+::: {.column width="60%"}
+-   A place for stabilization
+
+    -   Get you stable enough to go back home
+
+    -   or stable enough to transport to an inpatient unit
+
+ 
+
+-   Problems with non-urgent utilization
+
+    -   Overburdens department resources
+
+    -   Increases wait for care for all patients
+
+    -   Chair reaction of patients Leaving before they're even seen
+:::
+
+::: {.column width="40%"}
+![](images/bandage.png){fig-align="right"}
+:::
+:::
+
+## [Packed EDs]{style="font-weight:500"} {.smaller}
+
+::: columns
+::: {.column width="65%"}
+-   Crowding and overflowing longstanding issues
+
+-   Examples of low-acuity cases coming in
+
+    -   prescription refills
+
+    -   treatment of hypertension
+
+    -   chronic elevated blood sugar
+
+    -   behavioral health
+
+-   Source of patient and staff harm
+
+-   "COVID-19 has laid bare medicine's house of cards." ^\*^
+:::
+
+::: {.column width="35%"}
+![](images/packedED.png){fig-align="right"}
+:::
+:::
+
+::: footer
+\* [Dr. Sharon Anoush Chekijian in U.S. News and World Report](https://www.usnews.com/news/health-news/articles/2021-10-19/er-crowding-threatens-a-health-care-house-of-cards) \| Graphic via [CDC](https://www.cdc.gov/mmwr/volumes/69/wr/mm6923e1.htm)
+:::
+
+## [Homeless Care at Cedars-Sinai ED]{style="font-weight:500"} {.smaller}
+
+-   7,956 visits by 3,194 PEH patients Feb 2020-Jan 2021
+
+-   Roughly 2.49 visits per PEH patient
+
+-   Many there for basic needs
+
+    -   Food
+
+    -   Shelter
+
+    -   Primary care-level treatment
+
+## [California SB1152]{style="font-weight:500"} {.smaller}
+
+-   Passed in 2018, requires hospitals to document info about patients experiencing homelessness before discharging them.
+
+    -   Services offered
+
+        -   Transportation
+
+        -   Meal
+
+        -   Meds
+
+        -   Vaccinations
+
+        -   Weather-appropriate clothing
+
+    -   Resources offered
+
+        -   Clinical/Behavioral
+
+        -   Follow-up with PCP
+
+        -   Help getting health coverage
+
+## [A New Role is Born]{style="font-weight:500"} {.smaller}
+
+::: columns
+::: {.column width="60%"}
+**Community Resource Coordinator**
+
+-   Responsible for SB1152 checklist items
+
+-   Help PEH patients find more sustainable support
+
+-   Provide connections to community resources
+
+    -   Shelter
+
+    -   Staple needs
+
+    -   Insurance
+
+    -   Follow-up & specialty care appointments
+:::
+
+::: {.column width="40%"}
+[![      Weihao Qu, CRC](images/weihao.png){fig-align="right"}](https://www.cedars-sinai.org/eoc/cedars-sinai-connects-patients-to-services-for-homelessness.html)
+:::
+:::
+
+## [How's It Going?]{style="font-weight:500"}
+
+Are CRCs effective at reducing the use of emergency services for non-urgent matters while ensuring that homeless patients can access their basic needs?
+
+ 
+
+Data gathered in fulfilling SB1152 needs used to measure role's impact
+
+## [Studying the Impact]{style="font-weight:500"} {.smaller}
+
+-   Diff-in-diff cohort model
+
+    -   Visit rates of patients experiencing homelessness
+
+    -   Split by whether they were seen by a CRC during their index visit
+
+-   Dependent variables
+
+    -   Time interval between visits (in days)
+
+    -   Cost of stay
+
+    -   Length of stay (LOS)
+
+-   Differences in the populations were tested for statistical significance using a Welch's t-test
+
+## [What We Found]{style="font-weight:500"} {.smaller}
+
+::: columns
+::: {.column width="40%"}
+-   A two-sample t-test demonstrated statistical significance (p = 0.0014)
+
+-   22.82% increase to \# of days elapsed before a patient returned to the ED after visiting with a CRC
+
+-   95% confidence interval: 2.6-10.9 days larger gap between ED visits
+:::
+
+::: {.column width="60%"}
+![](images/overallGap.png){fig-align="right"}
+:::
+:::
+
+## [90-Day Return Rate]{style="font-weight:500"} {.scrollable}
+
+::: columns
+::: {.column width="65%"}
+![](images/90d.png){style="max-width: 95%;" fig-align="right"}
+:::
+
+::: {.column width="35%"}
+**Revisit rate:**
+
+:arrow_down:35%
+
+**95% CI:**
+
+0.8-1.4 fewer visits
+
+**p:** \<0.0001
+:::
+:::
+
+## [180-Day Return Rate]{style="font-weight:500"} {.scrollable}
+
+::: columns
+::: {.column width="60%"}
+![](images/180d.png){style="max-width: 95%;;" fig-align="right"}
+:::
+
+::: {.column width="35%"}
+**Revisit rate:**
+
+:arrow_down:35%
+
+**95% CI:**
+
+1.1-2.1 fewer visits
+
+**p:** \<0.0001
+:::
+:::
+
+## [Other Results]{style="font-weight:500"} {.smaller}
+
+::: columns
+::: {.column width="60%"}
+-   Difference in cost of care
+
+    -   p = 0.1050
+
+    -   Not statistically significant
+
+-   Difference in length of stay in the ED
+
+    -   p = 0.0150
+
+    -   Not statistically significant
+
+-   Makes sense considering CRC can't really affect those figures
+:::
+
+::: {.column width="40%"}
+![](images/scott.png){fig-align="right"}
+:::
+:::
+
+## [Understanding the Results]{style="font-weight:500"} {.smaller}
+
+-   Increased gap between ED visits
+
+-   Lowered rate of ED visits over 90 and 180 days
+
+-   Implications
+
+    -   Increased utilization of community resources may be decreasing frequency of needs that draw patients experiencing homelessness to ED
+
+    -   Reduced burden by lower-urgency needs on ED resources
+
+-   Possible effects
+
+-   Shorter wait times
+
+-   Fewer patients leaving without being seen
+
+-   Greater focus on other patients with more acute needs
+
+## [Beyond the First Year ...]{style="font-weight:500"} {.smaller}
+
+-   Slides so far showed Feb 2020-Jan 2021, but the work continues.
+
+-   Results Feb 2020-Jun 2022
+
+    -   16,166 visits by 14,161 PEH patients
+
+::: columns
+::: {.column width="30%"}
+#### Overall Avg Gap Between Visits {style="font-weight:500"}
+
+![](images/overallGapSince.png)
+
+:arrow_up: by 5.2-16.6 days
+:::
+
+::: {.column width="30%"}
+#### 90-Day Visit Rate {style="font-weight:500"}
+
+![](images/90dSince.png)
+
+:arrow_down: by 0.7-1.2 visits
+:::
+
+::: {.column width="30%"}
+#### 180-day Visit Rate {style="font-weight:500"}
+
+![](images/180dSince.png)
+
+:arrow_down: by 1.0-1.8 visits
+:::
+:::
+
+## . {background-image="images/questions.webp"}
+
+## [Thank you]{style="font-weight:500"}
+
+ 
+
+[![](images/email.png){style="--r-block-margin: 0"}](mailto:luke.morris@cshs.org) [luke.morris\@cshs.org](mailto:luke.morris@cshs.org)
+
+ 
+
+[![](images/github.png){style="--r-block-margin: 0"}](https://github.com/morrisluke) [morrisLuke](https://github.com/morrisluke)
+
+ 
+
+[![](images/linkedin.png){style="--r-block-margin: 0"}](https://www.linkedin.com/in/lukesmorris/) [lukesmorris](https://www.linkedin.com/in/lukesmorris/)
