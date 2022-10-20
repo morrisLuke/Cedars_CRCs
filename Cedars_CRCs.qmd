@@ -308,7 +308,7 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 -   Difference in length of stay in the ED
 
-    -   p = 0.0150
+    -   p = 0.1053
 
     -   Not statistically significant
 
@@ -344,9 +344,9 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 -   Slides so far showed Feb 2020-Jan 2021, but the work continues.
 
--   Results Feb 2020-Jun 2022
+-   Results Feb 2020-Sep 2022
 
-    -   16,166 visits by 14,161 PEH patients
+    -   17,230 visits by 7,446 PEH patients
 
 ::: columns
 ::: {.column width="30%"}
@@ -354,7 +354,7 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 ![](images/overallGapSince.png)
 
-:arrow_up: by 5.2-16.6 days
+:arrow_up: by 6.0-17.9 days
 :::
 
 ::: {.column width="30%"}
@@ -362,7 +362,7 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 ![](images/90dSince.png)
 
-:arrow_down: by 0.7-1.2 visits
+:arrow_down: by 0.7-1.1 visits
 :::
 
 ::: {.column width="30%"}
@@ -370,7 +370,7 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 ![](images/180dSince.png)
 
-:arrow_down: by 1.0-1.8 visits
+:arrow_down: by 1.1-1.8 visits
 :::
 :::
 
@@ -378,14 +378,14 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 ## [Thank you]{style="font-weight:500"}
 
- 
+&nbsp;
 
-[![](images/email.png){style="--r-block-margin: 0"}](mailto:luke.morris@cshs.org) [luke.morris\@cshs.org](mailto:luke.morris@cshs.org)
-
- 
-
-[![](images/github.png){style="--r-block-margin: 0"}](https://github.com/morrisluke) [morrisLuke](https://github.com/morrisluke)
+<p>[{{< fa envelope >}} luke.morris@cshs.org](mailto:luke.morris@cshs.org)</p>
 
  
 
-[![](images/linkedin.png){style="--r-block-margin: 0"}](https://www.linkedin.com/in/lukesmorris/) [lukesmorris](https://www.linkedin.com/in/lukesmorris/)
+<p>[{{< fa brands github >}} morrisLuke](https://github.io/morrisLuke)</p>
+
+ 
+
+<p>[{{< fa brands linkedin >}} lukesmorris](https://linkedin.com/in/lukesmorris)</p>

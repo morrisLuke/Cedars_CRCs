@@ -1,0 +1,24 @@
+---
+title: "A"
+subtitle: "B"
+author: "C"
+institute: "D"
+format: 
+  revealjs:
+    theme:
+      - moon
+    self-contained: true
+from: markdown+emoji
+---
+
+## [Thank you]{style="font-weight:500"}
+
+{{< fa envelope >}} address@email.net
+
+ 
+
+{{< fa brands github >}} https://github.com
+
+ 
+
+{{< fa brands linkedin >}} https://linkedin.com
