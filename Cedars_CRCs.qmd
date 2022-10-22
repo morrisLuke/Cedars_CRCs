@@ -78,7 +78,7 @@ Figures via [2020 Census](https://www.census.gov/programs-surveys/decennial-cens
 
 -   **LA City** (\~pop. 3.9 million)
 
-    -   39% of county population by 62% of PEH
+    -   39% of county population but 62% of PEH
 
     -   2/3 in first episode of homelessness
 
@@ -378,9 +378,9 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 ## [Thank you]{style="font-weight:500"}
 
-&nbsp;
+ 
 
-<p>[{{< fa envelope >}} luke.morris@cshs.org](mailto:luke.morris@cshs.org)</p>
+<p>[{{< fa envelope >}} luke.morris\@cshs.org](mailto:luke.morris@cshs.org)</p>
 
  
 
