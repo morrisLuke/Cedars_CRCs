@@ -344,9 +344,9 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 -   Slides so far showed Feb 2020-Jan 2021, but the work continues.
 
--   Results Feb 2020-Sep 2022
+-   Results Feb 2020-Apr 2023
 
-    -   17,230 visits by 7,446 PEH patients
+    -   20,669 visits by 8,902 PEH patients
 
 ::: columns
 ::: {.column width="30%"}
@@ -354,7 +354,7 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 ![](images/overallGapSince.png)
 
-:arrow_up: by 6.0-17.9 days
+:arrow_up: by 10.0-23.6 days
 :::
 
 ::: {.column width="30%"}
@@ -370,7 +370,7 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 ![](images/180dSince.png)
 
-:arrow_down: by 1.1-1.8 visits
+:arrow_down: by 1.2-1.8 visits
 :::
 :::
 
