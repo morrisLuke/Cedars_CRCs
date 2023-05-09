@@ -374,6 +374,357 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 :::
 :::
 
+## The Script {.scrollable .code-overflow-wrap}
+
+```{r part1, eval=FALSE, warning=FALSE, echo=TRUE}
+# Make relevant R packages available.
+library(dtplyr)
+library(tidyverse, warn.conflicts = FALSE)
+
+# Read in Homeless Patient Discharge Checklist dataset from Excel.
+patlog <- readxl::read_excel("~/SomeFolder/Homeless.xlsx")
+
+# Convert variables to appropriate data type.
+patlog$DOB <- ymd(patlog$DOB)
+patlog$`Admission Date` <- ymd_hms(patlog$`Admission Date`)
+patlog$`Discharge Date` <- ymd_hms(patlog$`Discharge Date`)
+patlog$`Last Seen DATE` <- ymd_hms(patlog$`Last Seen DATE`)
+
+# Ensure we're only looking at emergency visits
+patlog <- patlog %>%
+  filter(
+        (Department == "ASAP EMERGENCY DEPT" 
+         | Department == "MDRH EMERGENCY DEPT"))
+
+# Set relevant dates
+mindate <- date(min(patlog$`Discharge Date`, na.rm = TRUE))
+maxdate <- date(max(patlog$`Discharge Date`, na.rm = TRUE))
+lag90days <- date(max(patlog$`Discharge Date`, na.rm = TRUE) - days(90))
+lag180days <- date(max(patlog$`Discharge Date`, na.rm = TRUE) - days(180))
+
+# Declare those dates for readers
+glue::glue("Before we get into determining whether CSMC\'s and MRDH\'s
+           Community Resource Coordinators are having a statistically
+           significant effect on the department, let\'s quickly look at
+           their caseload from {month(mindate, label = TRUE)} 
+           {day(mindate)}, {year(mindate)} to 
+           {month(maxdate, label = TRUE)} {day(maxdate)}, 
+           {year(maxdate)}.")
+
+# Count the number of cases involving an ED Navigator (aka CRC).
+patlog %>%
+  group_by(metCRC = !is.na(`ED Navigator`)) %>%
+  tally()
+
+# Save those counts to their own variables
+CRCtotal <- sum(!is.na(patlog$`ED Navigator`))
+noCRCtotal <- sum(is.na(patlog$`ED Navigator`))
+
+# Share results with readers
+glue::glue("We can see that the CRCs had {CRCtotal} interactions with
+           homeless patients. {noCRCtotal} homeless encounters did not 
+           include a CRC interaction.")
+```
+
+## The Script (pt. 2) {.scrollable .code-overflow-wrap}
+
+```{r part2, eval=FALSE, warning=FALSE, echo=TRUE}
+# Create three new variables, one calculating days elapsed before 
+# the patient was seen again after this visit,
+# one counting up the number of times the patient was seen in the
+# 90 days following this visit, and
+# one counting up the number of times the patient was seen in the
+# 180 days following this visit.
+patlog <- patlog %>%
+  group_by(Name) %>%
+  mutate(nextVisit = lead(`Discharge Date`),
+         daysUntilNextVisit = round(
+           int_length(
+             `Discharge Date`%--%nextVisit)/86400),
+         visitsNext90Days = map_dbl(
+           `Discharge Date`, 
+           ~sum(`Discharge Date` %within% interval(., . + days(90)),
+                na.rm = TRUE)) -1,
+         visitsNext180Days = map_dbl(
+           `Discharge Date`, 
+           ~sum(`Discharge Date` %within% interval(., . + days(180)), 
+                na.rm = TRUE)) -1) %>%
+  ungroup()
+
+# For every patient who saw a CRC during their visit, list the number
+# of days between the current visit and their next one
+sawCRC <- patlog %>%
+  filter(!is.na(`ED Navigator`)) %>%
+  drop_na(daysUntilNextVisit) %>%
+  pull(daysUntilNextVisit)
+
+# For every patient who did not see a CRC during their visit, list
+# the number of days between the current visit and their next one
+noCRC <- patlog %>%
+  filter(is.na(`ED Navigator`)) %>%
+  drop_na(daysUntilNextVisit) %>%
+  pull(daysUntilNextVisit)
+
+#Declare n-sizes for readers
+glue::glue("In this test, for patients who returned after 
+           encountering a CRC, n = {length(sawCRC)}. 
+           For patients who returned after not
+           encountering a CRC in their previous visit, 
+           n = {length(noCRC)}.")
+
+# Perform a t-test to determine if the difference in the two
+# groups' average number of days between ED visits is 
+# statistically significant
+dayGapTest <- t.test(sawCRC, noCRC, conf.level = 0.95)
+
+# Display raw test results
+dayGapTest
+
+#Calculations for visualization
+gapInDays <- patlog %>%
+  filter(is.na(daysUntilNextVisit) == FALSE) %>%
+  mutate(visitedByCRC = !is.na(`ED Navigator`)) %>%
+  select(visitedByCRC, daysUntilNextVisit) %>%
+  group_by(visitedByCRC) %>%
+  summarize(
+    avgVisitGap = mean(daysUntilNextVisit), 
+    n = n(), 
+    sd = sd(daysUntilNextVisit)
+    ) %>%
+  mutate(se=sd/sqrt(n))
+
+# Visualize results
+ggplot(
+  gapInDays, 
+  aes(visitedByCRC, avgVisitGap, fill = visitedByCRC
+      )
+  ) +
+  geom_col() +
+  geom_errorbar(
+    aes(
+      x = visitedByCRC, 
+      ymin = avgVisitGap - se, 
+      ymax = avgVisitGap + se), 
+    width = 0.2) +
+  geom_text(aes(label = format(signif(avgVisitGap, digits = 3),
+                               nsmall = 2)), vjust = 3.9, size = 8) +
+  ggtitle("Average Gap Between ED Visits for Homeless Patients") +
+  xlab("Patient Group") +
+  ylab("Average Gap in Days") +
+  scale_x_discrete(labels = c ("Wasn't Seen by CRC", "Saw CRC")) +
+  scale_fill_manual(values = alpha(c("#B0B3B2", "#4EC3E0"), .6)) +
+  theme_bw() +
+  theme(
+        legend.position = "none",
+        plot.title = element_text(size = 17),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16)
+        )
+
+# Explain the results
+glue::glue("From this output, we can say that we're 95% confident
+           that CRC interactions had an impact on the rate of 
+           return for repeat homeless visitors seen between
+           {month(mindate, label = TRUE)} 
+           {day(mindate)}, {year(mindate)} to 
+           {month(maxdate, label = TRUE)} {day(maxdate)}, 
+           {year(maxdate)}, equal to somewhere between 
+           {round(dayGapTest$conf.int[[1]], 1)} and 
+           {round(dayGapTest$conf.int[[2]], 1)} extra days 
+           between visits.")
+```
+
+## The Script (pt. 3) {.scrollable .code-overflow-wrap}
+
+```{r part3, eval=FALSE, warning=FALSE, echo=TRUE}
+# Since the next test requires a 90-day window and we have data for 
+# Feb 1 2020 - April 30, 2023, we'll cut off visits at Jan 30 2023 to 
+# ensure every observation has the necessary 90-day window
+cutoff90days <- patlog %>%
+  filter(`Discharge Date` < ymd(lag90days))
+
+# For every patient who saw a CRC during their visit, list the number of
+# times they had been seen in the ED over the 90 days after the
+# current visit.
+sawCRC90days <- cutoff90days %>%
+  filter(!is.na(`ED Navigator`)) %>%
+  pull(visitsNext90Days)
+
+# For every patient who did not see a CRC during their visit, list the 
+# number of times they had been seen in the ED over the 90 days 
+# after the current visit.
+noCRC90days <- cutoff90days %>%
+  filter(is.na(`ED Navigator`)) %>%
+  pull(visitsNext90Days)
+
+#Declare n-sizes for readers
+glue::glue("To look further, we'll compare the average number of 
+           visits in a 90-day period for patients who encountered
+           CRCs vs. those who didn't. Data used for this test is
+           visits from {month(mindate, label = TRUE)} 
+           {day(mindate)}, {year(mindate)} to 
+           {month(lag90days, label = TRUE)} 
+           {day(lag90days)}, {year(lag90days)}, 
+           to allow for the appropriate 90-day measurement window.")
+
+glue::glue("In this test, for ED encounters by patients who met with 
+           a CRC, n = {length(sawCRC90days)}. For ED encounters by
+           patients who hadn't met with a CRC, 
+           n = {length(noCRC90days)}.")
+
+# Perform a t-test to determine if the difference in the two groups'
+# average number of visits over 90 days is statistically significant
+test90days <- t.test(sawCRC90days, noCRC90days, conf.level = 0.95)
+
+# Display raw test results
+test90days
+
+#Calculations for visualization
+rate90Days <- cutoff90days %>%
+  mutate(visitedByCRC = !is.na(`ED Navigator`)) %>%
+  select(visitedByCRC, visitsNext90Days) %>%
+  group_by(visitedByCRC) %>%
+  summarize(
+    rateOfVisits90 = mean(visitsNext90Days), 
+    n = n(), 
+    sd = sd(visitsNext90Days)) %>%
+  mutate(se=sd/sqrt(n))
+  
+# Visualize results
+ggplot(rate90Days, aes(visitedByCRC, rateOfVisits90, 
+                       fill = visitedByCRC)) +
+  geom_col() +
+  geom_errorbar(
+    aes(
+      x = visitedByCRC,
+      ymin = rateOfVisits90 - se,
+      ymax = rateOfVisits90 + se),
+    width = 0.2) +
+  geom_text(
+    aes(
+      label = format(signif(rateOfVisits90, digits = 3), 
+                     nsmall = 2)), 
+    vjust = 3.9, 
+    size = 8) +
+  ggtitle("Rate of ED Visits per 90 Days for Homeless Patients") +
+  xlab("Patient Group") +
+  ylab("Rate of ED Visits per 90 Days") +
+  scale_x_discrete(labels = c ("Wasn't Seen by CRC", "Saw CRC")) +
+  scale_fill_manual(values = alpha(c("#B0B3B2", "#4EC3E0"), .6)) +
+  theme_bw() +
+  theme(
+        legend.position = "none",
+        plot.title = element_text(size = 18),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16)
+    )
+
+# Explain the results
+glue::glue("From these results, we're 95% confident that CRC interactions
+           have a statistically significant impact on homeless patients' 
+           rate of visits per 90 days, with patients who saw them being 
+           seen somewhere between 
+           {round(abs(test90days$conf.int[[2]]), 1)} 
+           to {round(abs(test90days$conf.int[[1]]), 1)} 
+           fewer times over the next 90 days.")
+```
+
+## The Script (pt. 4) {.scrollable .code-overflow-wrap}
+
+```{r part4, eval=FALSE, warning=FALSE, echo=TRUE}
+# For every patient who did not see a CRC during their visit, list the 
+# number of times they had been seen in the ED over the 180 days after 
+# the current visit. Since the next test requires a 180-day window and 
+# we have data for Feb. 1, 2020 - Apr 30, 2023, we'll cut off visits 
+# at Nov 1 2022 to ensure every observation has the necessary 180-day
+# window
+cutoff180days <- patlog %>%
+  filter(`Discharge Date` < ymd(lag180days))
+
+# For every patient who saw a CRC during their visit, list the number 
+# of times they had been seen in the ED over the 180 days after the 
+# current visit.
+sawCRC180days <- cutoff180days %>%
+  filter(!is.na(`ED Navigator`)) %>%
+  drop_na(visitsNext180Days) %>%
+  pull(visitsNext180Days)
+
+# For every patient who did not see a CRC during their visit, list the
+# number of times they had been seen in the ED over the 180 days after 
+# the current visit.
+noCRC180days <- cutoff180days %>%
+  filter(is.na(`ED Navigator`)) %>%
+  drop_na(visitsNext180Days) %>%
+  pull(visitsNext180Days)
+
+#Declare n-sizes for readers
+glue::glue("Expanding the window to 180 days also demonstrates value in
+           the CRC program. Data used for this test is visits from 
+           {month(mindate, label = TRUE)} {day(mindate)}, {year(mindate)} 
+           to {month(lag180days, label = TRUE)} {day(lag180days)}, 
+           {year(lag180days)}, to allow for the appropriate 180-day 
+           measurement window.")
+
+glue::glue("In this test, for ED encounters by patients who met with
+            a CRC, n = {length(sawCRC180days)}. For ED encounters by
+            patients who hadn't met with a CRC, 
+            n = {length(noCRC180days)}.")
+
+# Perform a t-test to determine if the difference in the two groups' 
+# average number of visits over 180 days is statistically significant
+test180days <- t.test(sawCRC180days, noCRC180days, conf.level = 0.95)
+
+# Display raw test results
+test180days
+
+#Calculations for visualization
+rate180Days <- cutoff180days %>%
+  mutate(visitedByCRC = !is.na(`ED Navigator`)) %>%
+  select(visitedByCRC, visitsNext180Days) %>%
+  group_by(visitedByCRC) %>%
+  summarize(
+    rateOfVisits180 = mean(visitsNext180Days), 
+    n = n(), 
+    sd = sd(visitsNext180Days)) %>%
+  mutate(se=sd/sqrt(n))
+  
+# Visualize results
+ggplot(rate180Days, 
+       aes(visitedByCRC, rateOfVisits180, fill = visitedByCRC)) +
+  geom_col() +
+  geom_errorbar(aes(
+                x = visitedByCRC,
+                  ymin = rateOfVisits180 - se,
+                  ymax = rateOfVisits180 + se),
+                width = 0.2) +
+  geom_text(aes(
+    label = format(signif(rateOfVisits180, digits = 3), 
+                   nsmall = 2)), 
+    vjust = 3.9, 
+    size = 8) +
+  ggtitle("Rate of ED Visits per 180 Days for Homeless Patients") +
+  xlab("Patient Group") +
+  ylab("Rate of ED Visits per 180 Days") +
+  scale_x_discrete(labels = c ("Wasn't Seen by CRC", "Saw CRC")) +
+  scale_fill_manual(values = alpha(c("#B0B3B2", "#4EC3E0"), .6)) +
+  theme_bw() +
+  theme(
+        legend.position = "none",
+        plot.title = element_text(size = 18),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16)
+      )
+
+# Explain the results
+glue::glue("From these results, we're 95% confident that CRC interactions
+           have a statistically significant impact on homeless patients' 
+           rate of visits per 180 days, with patients who saw them being
+           seen somewhere between 
+           {round(abs(test180days$conf.int[[2]]), 1)} to 
+           {round(abs(test180days$conf.int[[1]]), 1)} fewer times over
+           the next 180 days.")
+```
+
 ## . {background-image="images/questions.webp"}
 
 ## [Thank you]{style="font-weight:500"}
