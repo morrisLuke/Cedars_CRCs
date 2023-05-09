@@ -521,11 +521,11 @@ A CRC doesn’t have any sway in what treatment you receive in the ED or when.
 
 -   Possible effects
 
--   Shorter wait times
+    -   Shorter wait times
 
--   Fewer patients leaving without being seen
+    -   Fewer patients leaving without being seen
 
--   Greater focus on other patients with more acute needs
+    -   Greater focus on other patients with more acute needs
 
 ::: {.notes}
 So yay, we got a few p-values to go our way. But what does that mean?
