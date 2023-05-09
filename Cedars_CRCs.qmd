@@ -10,6 +10,7 @@ format:
     self-contained: true
     logo: images/CSlogo3.png
 from: markdown+emoji
+editor: source
 ---
 
 ::: columns
@@ -32,6 +33,20 @@ from: markdown+emoji
 
 ::: footer
 This author has no conflicts of interest to disclose
+:::
+
+::: {.notes}
+Here’s what’s on tap:
+
+A quick look at homelessness figures
+
+The Role Emergency Departments are designed to meet
+
+How those don’t two things don’t always line up
+
+A new role we created to tackle those issues
+
+And how that’s going
 :::
 
 ## [Homelessness by the Numbers]{style="font-weight:500"} {.smaller}
@@ -64,6 +79,18 @@ This author has no conflicts of interest to disclose
 Figures via [2020 Census](https://www.census.gov/programs-surveys/decennial-census/decade/2020/2020-census-results.html) and [HUD 2020 Annual Homelessness Assessment Report](https://www.huduser.gov/portal/sites/default/files/pdf/2020-AHAR-Part-1.pdf)
 :::
 
+::: {.notes}
+I won’t drag you through all of these figures, but here are the highlights:
+
+About 0.2% of the U.S. population was experiencing homelessness in 2020.
+
+Post-COVID that number’s only gone up from the 580 thousand seen here.
+
+Zooming in, 12 percent of Americans live in California
+
+But 28 percent of all Americans experiencing homelessness live in the state
+:::
+
 ## [Homelessness in LA]{style="font-weight:500"} {.smaller}
 
 ::: columns
@@ -94,6 +121,18 @@ Figures via [2020 Census](https://www.census.gov/programs-surveys/decennial-cens
 Figures via [LAHSA 2020 Count](https://www.lahsa.org/news?article=726-2020-greater-los-angeles-homeless-count-results#:~:text=LOS%20ANGELES%2C%20CA%E2%80%94The%20Los,point%2Din%2Dtime%20count.) and [Union Rescue Mission in Skid Row](https://urm.org/)
 :::
 
+::: {.notes}
+Zooming in even further, Los Angeles County is home to 25% of California’s population
+
+but 41% of Californians experiencing homelessness reside in the county.
+
+2 of every 5 LA County residents is within the City of LA, 
+
+but 3 of every 5 people experiencing homelessness in the county resides in city limits.
+
+And COVID is expected to have left another 20,000 Angelenos homeless.
+:::
+
 ## [The Emergency Medicine Model]{style="font-weight:500"} {.smaller}
 
 ::: columns
@@ -118,6 +157,28 @@ Figures via [LAHSA 2020 Count](https://www.lahsa.org/news?article=726-2020-great
 ::: {.column width="40%"}
 ![](images/bandage.png){fig-align="right"}
 :::
+:::
+
+::: {.notes}
+With the background of homelessness established, let’s look at what Emergency Departments are designed to do:
+
+It’s a community safety net for anyone needing aid. 
+
+EMTALA ensures that.
+
+But emergency departments are designed as more or less a midway point in your care journey: 
+
+The idea is that you get stabilized enough to go back home or to be admitted.
+
+Recent decades have seen the ED model tested and challenged by growing non-urgent ED utilization.
+
+The results? 
+
+The ED’s resources get spread thin, 
+
+everybody’s wait time balloons with the influx of patients, 
+
+and people leave without even being seen because they’re tired of waiting.
 :::
 
 ## [Packed EDs]{style="font-weight:500"} {.smaller}
@@ -150,6 +211,26 @@ Figures via [LAHSA 2020 Count](https://www.lahsa.org/news?article=726-2020-great
 \* [Dr. Sharon Anoush Chekijian in U.S. News and World Report](https://www.usnews.com/news/health-news/articles/2021-10-19/er-crowding-threatens-a-health-care-house-of-cards) \| Graphic via [CDC](https://www.cdc.gov/mmwr/volumes/69/wr/mm6923e1.htm)
 :::
 
+::: {.notes}
+I’m not telling you anything new here. 
+
+We’ve all seen overflowing waiting rooms and gurneys lining hallways.
+
+Those non-urgent cases are part of the culprit
+
+Folks are trying to get their prescriptions refilled at the ED
+
+Poorly regulated blood pressure or blood sugar cases pack the waiting room
+
+and for many behavioral health patients, stopping by the ED essentially becomes part of their social routine.
+
+All through this, staff are getting spread thin, 
+
+that drain on energy and burnout puts both staff and patients at risk.
+
+And these issues all existed BEFORE COVID.
+:::
+
 ## [Homeless Care at Cedars-Sinai ED]{style="font-weight:500"} {.smaller}
 
 -   7,956 visits by 3,194 PEH patients Feb 2020-Jan 2021
@@ -163,6 +244,22 @@ Figures via [LAHSA 2020 Count](https://www.lahsa.org/news?article=726-2020-great
     -   Shelter
 
     -   Primary care-level treatment
+
+::: {.notes}
+One of the patient groups often behind those low-acuity cases are those experiencing homelessness
+
+Here’s what the homeless caseload looked like in our ED: 
+
+February 2020 to January 2021, our neighbors experiencing homelessness visited nearly 8,000 times. 
+
+The average here suggests 2-3 times per patient, 
+
+but some were seen dozens or even more than 100 times.
+
+Common chief complaints we see in those visits are food needs, 
+
+seeking shelter and treatment for issues best handled by a PCP or urgent care.
+:::
 
 ## [California SB1152]{style="font-weight:500"} {.smaller}
 
@@ -187,6 +284,24 @@ Figures via [LAHSA 2020 Count](https://www.lahsa.org/news?article=726-2020-great
         -   Follow-up with PCP
 
         -   Help getting health coverage
+
+::: {.notes}
+Rewind a little bit before COVID, 
+
+California passed a law requiring hospitals to document the types of services and resources offered to patients experiencing homelessness before discharging them
+
+Were they fed?
+
+Did they get a ride to where they stay?
+
+How about meds? Vaccinations? Help applying for insurance?
+
+Were their clothes appropriate for the conditions outside?
+
+Were they set up with a follow-up appointment with a PCP or behaviorist?
+
+All these must be noted before discharge according to California law.
+:::
 
 ## [A New Role is Born]{style="font-weight:500"} {.smaller}
 
@@ -214,6 +329,27 @@ Figures via [LAHSA 2020 Count](https://www.lahsa.org/news?article=726-2020-great
 :::
 :::
 
+::: {.notes}
+Obviously the status quo wasn’t meeting our homeless patients’ needs.
+
+ED leadership started wondering if there was something being missed in the initial encounter 
+
+that could limit the need for return visits. 
+
+And somebody was going to need to track those new data points.
+
+A generous donor was able to help the ED create a new role, 
+
+the Community Resource Coordinator was charged with going beyond the symptoms with our patients experiencing homelessness.
+
+If patients welcome a CRC’s help, the CRC works on connecting them with vital staple needs, or shelter, or health coverage, or follow-up 
+care.
+
+By the way, this is Weihao, who was one of our OG CRCs. 
+
+A lot of the target variables you’re about to see are his brainchild. I just crunched them.
+:::
+
 ## [How's It Going?]{style="font-weight:500"}
 
 Are CRCs effective at reducing the use of emergency services for non-urgent matters while ensuring that homeless patients can access their basic needs?
@@ -221,6 +357,14 @@ Are CRCs effective at reducing the use of emergency services for non-urgent matt
  
 
 Data gathered in fulfilling SB1152 needs used to measure role's impact
+
+::: {.notes}
+So let’s tackle this like a research question: 
+
+Are CRCs effective at reducing the use of emergency services for non-urgent matters while ensuring that homeless patients can access their basic needs?
+
+Luckily, we’ve got a dataset to help us figure it out.
+:::
 
 ## [Studying the Impact]{style="font-weight:500"} {.smaller}
 
@@ -240,6 +384,21 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 -   Differences in the populations were tested for statistical significance using a Welch's t-test
 
+::: {.notes}
+Nerd goggles on.
+
+We tested a diff-in-diff cohort model 
+
+to compare the visit rate of patients experiencing homelessness. 
+
+One group saw a CRC at their index visit, 
+
+one group didn’t see a CRC on that visit.
+
+Across groups we compared how long it took a patient to return to the ED, the cost of their stay, and the length of their stay and ran 
+each through a t-test.
+:::
+
 ## [What We Found]{style="font-weight:500"} {.smaller}
 
 ::: columns
@@ -254,6 +413,12 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 ::: {.column width="60%"}
 ![](images/overallGap.png){fig-align="right"}
 :::
+:::
+
+::: {.notes}
+When it came to gap between return visits, we indeed found statistical significance. 
+
+Patients who saw a CRC took an extra 3-11 days to return compared with those who didn’t.
 :::
 
 ## [90-Day Return Rate]{style="font-weight:500"} {.scrollable}
@@ -276,6 +441,12 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 :::
 :::
 
+::: {.notes}
+We compared visits per next 90 days and next 180 days. 
+
+Patients who met with a CRC had 1-2 fewer visits in that window of time.
+:::
+
 ## [180-Day Return Rate]{style="font-weight:500"} {.scrollable}
 
 ::: columns
@@ -294,6 +465,12 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 
 **p:** \<0.0001
 :::
+:::
+
+::: {.notes}
+We compared visits per next 90 days and next 180 days. 
+
+Patients who met with a CRC had 1-2 fewer visits in that window of time.
 :::
 
 ## [Other Results]{style="font-weight:500"} {.smaller}
@@ -320,6 +497,16 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 :::
 :::
 
+::: {.notes}
+Those differences for cost and length of stay didn’t quite work out. 
+
+We couldn’t achieve statistical significance there, 
+
+but upon reflection that made sense. 
+
+A CRC doesn’t have any sway in what treatment you receive in the ED or when.
+:::
+
 ## [Understanding the Results]{style="font-weight:500"} {.smaller}
 
 -   Increased gap between ED visits
@@ -339,6 +526,20 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 -   Fewer patients leaving without being seen
 
 -   Greater focus on other patients with more acute needs
+
+::: {.notes}
+So yay, we got a few p-values to go our way. But what does that mean?
+
+The big win comes in the fact we know these patients are getting connected to the community resources they need. 
+
+They’re getting opportunities at follow-up care that goes beyond the symptoms.
+
+Meanwhile, in the ED, the possible gains are cuts in wait time, 
+
+fewer patients heading for the door before being seen, 
+
+and emergency providers getting to do more of what they entered the field to do: Save lives in immediate danger
+:::
 
 ## [Beyond the First Year ...]{style="font-weight:500"} {.smaller}
 
@@ -373,6 +574,30 @@ Data gathered in fulfilling SB1152 needs used to measure role's impact
 :arrow_down: by 1.2-1.8 visits
 :::
 :::
+
+::: {.notes}
+We’ve continued monitoring results beyond that first year of the CRC program, 
+
+and things continue to look promising for reducing repeat visits.
+:::
+
+## The Dataset {.smaller}
+
+Patient Identifier
+
+Encounter Identifier
+
+Arrival Datetime
+
+Departure Datetime
+
+ED Navigator
+
+Total Charges
+
+Visits last 90 Days
+
+Visits last 180 Days
 
 ## The Script {.scrollable .code-overflow-wrap}
 
